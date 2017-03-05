@@ -1,6 +1,7 @@
 ## Hangman
 
 `$` `gcc hangman.c -o hangman`
+
 `$` `./hangman`
 ```
 Allowed tries: 5
