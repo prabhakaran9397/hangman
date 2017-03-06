@@ -50,6 +50,16 @@ void printQuest(int chars[], char S[])
 	puts("");
 }
 
+void printLeftAplha(int chars[], char S[])
+{
+	int i;
+	for(i=0; i<27; i++) 
+		if(chars[i]!=2)
+			printf("[%c]", i<26?i+'a':' ');
+	puts("");
+	
+}
+
 int isWin(int chars[], char S[])
 {
 	int f = 1;
@@ -85,17 +95,21 @@ int main(int argc, char *argv[])
 	while(x = getc(stdin)) {
 		if(isalpha(x) || x == ' ') {
 			x = in(x);
+				system("clear");
 			if(chars[x] == 1) {
 				chars[x] = 2;
-				printf("[Right]\t\t\t");
+				printf("[Right] ");
 			}
 			else if(chars[x] == 2) {
-				printf("[Already Guessed]\t");
+				printf("[Already Guessed] ");
 			}
 			else {
-				system("clear");
-				printf("[Wrong] [Tries: %d]\t", --Tries);
+				chars[x] = 2;
+				printf("[Wrong] ");
+				--Tries;
 			}
+			printf("[Tries: %d] ", Tries);
+			printLeftAplha(chars, Question);
 			printQuest(chars, Question);
 
 			if(isWin(chars, Question)) {
